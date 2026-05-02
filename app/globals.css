@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cave-bg: 26 13% 8%;
+    --cave-card: 28 19% 13%;
+    --peri-orange: 16 78% 62%;
+    --earth-brown: 24 51% 28%;
+    --cave-blue: 217 39% 39%;
+    --cream: 36 60% 90%;
+    --muted: 30 15% 59%;
+    --success: 130 22% 54%;
+    --warning: 41 65% 55%;
+    --danger: 0 50% 47%;
+
+    --background: var(--cave-bg);
+    --foreground: var(--cream);
+    --card: var(--cave-card);
+    --card-foreground: var(--cream);
+    --popover: var(--cave-card);
+    --popover-foreground: var(--cream);
+    --primary: var(--peri-orange);
+    --primary-foreground: var(--cream);
+    --secondary: var(--earth-brown);
+    --secondary-foreground: var(--cream);
+    --muted-foreground: var(--muted);
+    --accent: var(--earth-brown);
+    --accent-foreground: var(--cream);
+    --destructive: var(--danger);
+    --destructive-foreground: var(--cream);
+    --border: 24 30% 22%;
+    --input: 24 30% 22%;
+    --ring: var(--peri-orange);
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, hsl(28 19% 18% / 0.4), transparent 60%),
+    radial-gradient(ellipse at bottom, hsl(217 39% 18% / 0.2), transparent 60%),
+    hsl(var(--cave-bg));
+  color: hsl(var(--cream));
+  min-height: 100vh;
+}
+
+.alert-pulse {
+  animation: alert-pulse 2s ease-in-out infinite;
+}
+
+@keyframes alert-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--danger) / 0.5); }
+  50% { box-shadow: 0 0 0 8px hsl(var(--danger) / 0); }
+}
+
+.leaflet-container {
+  background: hsl(var(--cave-bg));
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+
+.route-animated {
+  animation: dash-offset 1.5s linear infinite;
+}
+
+@keyframes dash-offset {
+  to { stroke-dashoffset: -20; }
+}
+
+.loca-tooltip {
+  background: hsl(var(--cave-card)) !important;
+  color: hsl(var(--cream)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 0.5rem !important;
+  font-size: 0.75rem !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
+}
+
+.loca-tooltip::before {
+  border-top-color: hsl(var(--cave-card)) !important;
+}
+
+/* Ventilation panel entrance */
+.ventilation-panel-enter {
+  animation: slide-up-fade 0.3s ease-out;
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ventilation panel exit */
+.ventilation-panel-exit {
+  animation: slide-down-fade 0.3s ease-in forwards;
+}
+
+@keyframes slide-down-fade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Scrollbar styling for action log */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 2px;
+}
+
+/* Anomaly banner slow pulse */
+.anomaly-banner-pulse {
+  animation: anomaly-banner-pulse 4s ease-in-out infinite;
+}
+
+@keyframes anomaly-banner-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Hero overlay progress */
+@keyframes hero-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
