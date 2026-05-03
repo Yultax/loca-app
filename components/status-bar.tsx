@@ -38,12 +38,19 @@ const ANOMALY_LABELS: Record<AnomalyType, string> = {
 
 const NOTIF_POLL_INTERVAL = 3000;
 
-const typeIcons: Record<ActionEntry['type'], string> = {
-  ventilation: '🌬️',
-  anomaly: '⚠️',
-  recovery: '✅',
-  system: '⚙️',
-  detection: '🔍',
+const typeIconMap: Record<ActionEntry['type'], typeof Thermometer> = {
+  ventilation: Wind,
+  anomaly: AlertTriangle,
+  recovery: Zap,
+  system: Database,
+  detection: Thermometer,
+};
+const typeIconColors: Record<ActionEntry['type'], string> = {
+  ventilation: 'text-[hsl(var(--cave-blue))]',
+  anomaly: 'text-[hsl(var(--warning))]',
+  recovery: 'text-[hsl(var(--success))]',
+  system: 'text-[hsl(var(--muted))]',
+  detection: 'text-[hsl(var(--danger))]',
 };
 
 function StatusIndicator({ source }: { source?: string; updatedAt?: string }) {
@@ -168,7 +175,7 @@ export function StatusBar({ demoMode, onDemoModeChange, onTriggerAnomaly, canTri
                   key={action.id}
                   className="flex items-start gap-2 px-3 py-2 cursor-default focus:bg-[hsl(var(--cave-bg))]"
                 >
-                  <span className="shrink-0 mt-0.5">{typeIcons[action.type]}</span>
+                  {(() => { const NIcon = typeIconMap[action.type]; return <NIcon className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${typeIconColors[action.type]}`} />; })()}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-xs font-semibold text-[hsl(var(--cream))] truncate">{action.locaNumber}</span>

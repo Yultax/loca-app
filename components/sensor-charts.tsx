@@ -79,7 +79,7 @@ export function SensorCharts({ history, variety, isLoading }: SensorChartsProps)
                   y1={variety.optimalTempC[0]}
                   y2={variety.optimalTempC[1]}
                   fill="hsl(130 22% 54%)"
-                  fillOpacity={0.15}
+                  fillOpacity={0.25}
                 />
               )}
               <Area
@@ -117,7 +117,7 @@ export function SensorCharts({ history, variety, isLoading }: SensorChartsProps)
                   y1={variety.optimalHumidity[0]}
                   y2={variety.optimalHumidity[1]}
                   fill="hsl(130 22% 54%)"
-                  fillOpacity={0.15}
+                  fillOpacity={0.25}
                 />
               )}
               <Area

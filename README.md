@@ -1,77 +1,36 @@
-# LOCA — Cave2Cloud Smart Potato Storage Intelligence
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> *Yer altının zekası, üreticinin cebinde.*
+## Getting Started
 
-**Kapadokya Hackathon 2026** — Cave2Cloud teması
-
-## Ne Yapıyor?
-
-LOCA, patates depolarındaki her loca'yı sensör + görüntü işleme + AI tahmini ile izleyerek:
-
-- **Fire oranını** %10-15'ten %3-5'e düşürür
-- **Satış zamanlamasını** borsa verisi + döviz kuru + lojistik karbon maliyeti üçgeninde optimize eder
-- **Havalandırmayı** dış hava koşullarına göre otonom yönetir
-- **CBAM uyumlu** karbon karnesi ile AB ihracatına hazırlar
-
-## Temel Özellikler
-
-| Feature | Açıklama |
-|---------|----------|
-| **Sat/Bekle Karar Asistanı** | TCMB kuru + TOBB fiyat + fire tahmini ile net kâr karşılaştırması |
-| **Otonom Havalandırma** | Open-Meteo dış hava + loca iç sensör → kepenk açma/kapama kararı |
-| **CV Filiz Dedektörü** | Görüntü işleme ile filizlenme erken tespiti |
-| **Karbon Zinciri** | ORS rotalama + CBAM gölge fiyatı hesaplama |
-| **Ürün Uyumluluk** | Etilen/CO₂ çapraz kontaminasyon risk matrisi |
-| **BigBag İzlenebilirlik** | QR → loca → kamyon → fabrika traceability zinciri |
-
-## Tech Stack
-
-- **Frontend:** Next.js 14 (App Router) + TypeScript + Tailwind CSS + shadcn/ui
-- **Database:** Supabase (Postgres + Realtime)
-- **Harita:** Leaflet
-- **Grafikler:** Recharts
-- **Dış API'ler:** TCMB EVDS, Open-Meteo, OpenRouteService, Nominatim
-
-## Kurulum
+First, run the development server:
 
 ```bash
-# Bağımlılıkları yükle
-pnpm install
-
-# Ortam değişkenlerini ayarla
-cp .env.local.example .env.local
-# .env.local içini doldur (Supabase URL/Key)
-
-# Geliştirme sunucusunu başlat
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
+# or
+bun dev
 ```
 
-[http://localhost:3000](http://localhost:3000) adresinde açılır.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Proje Yapısı
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```
-├── app/              # Next.js App Router sayfaları + API routes
-│   └── api/          # Server-side route handlers (TCMB, weather, decision, vb.)
-├── components/       # React bileşenleri
-│   └── ui/           # shadcn/ui base components
-├── hooks/            # Custom React hooks
-├── lib/              # İş mantığı, hesaplama motorları, seed data
-│   └── seed/         # Mock veri (varieties, depots, farmers, buyers, contracts)
-├── public/           # Statik dosyalar (video, görseller)
-├── supabase/         # Migration dosyaları
-├── scripts/          # Seed script
-└── docs/             # SPEC.md, CEO_INSIGHTS.md
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Etki
+## Learn More
 
-Türkiye'de yıllık ~5 milyon ton patates üretiliyor. Niğde-Nevşehir hattı bunun %44'ünü temsil ediyor. %5'lik fire azalması = **~110.000 ton/yıl kurtarma, 2 milyar TL+ ekonomik değer**.
+To learn more about Next.js, take a look at the following resources:
 
-## Ekip
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Kapadokya Hackathon 2026 — Cave2Cloud
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-*Built with Next.js, Supabase, and AI-powered decision engines.*
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

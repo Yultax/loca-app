@@ -112,9 +112,9 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
             </div>
             <button
               onClick={() => setCompatOpen(true)}
-              className="px-3 py-1.5 rounded-lg bg-[hsl(var(--peri-orange))]/20 text-[hsl(var(--peri-orange))] text-sm font-semibold hover:bg-[hsl(var(--peri-orange))]/30 transition-colors"
+              className="px-4 py-2 rounded-lg bg-[hsl(var(--peri-orange))] text-white text-sm font-bold hover:bg-[hsl(var(--peri-orange))]/90 transition-colors shadow-md"
             >
-              + Urun Ata
+              + Ürün Ata
             </button>
           </div>
           <Separator className="bg-[hsl(var(--border))] mb-3" />
@@ -267,7 +267,7 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
             <div className="min-w-0">
               <div className="text-[10px] text-[hsl(var(--muted))] uppercase tracking-wider">Depoda</div>
               <div className="font-mono font-bold text-sm leading-tight">
-                {days} <span className="text-[hsl(var(--muted))] font-normal text-xs">gun</span>
+                {days} <span className="text-[hsl(var(--muted))] font-normal text-xs">gün</span>
               </div>
             </div>
           </div>
@@ -277,7 +277,7 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
         <div className="flex items-center justify-between rounded-lg bg-[hsl(var(--cave-bg))]/60 px-3 py-2">
           <div className="flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-[hsl(var(--peri-orange))]" />
-            <span className="text-[10px] text-[hsl(var(--muted))] uppercase tracking-wider">Borsa Fiyati</span>
+            <span className="text-[10px] text-[hsl(var(--muted))] uppercase tracking-wider">Borsa Fiyatı</span>
             {tobbPrice?.source === 'live' && (
               <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--success))] animate-pulse" />
             )}

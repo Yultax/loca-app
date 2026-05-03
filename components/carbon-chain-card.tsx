@@ -5,6 +5,7 @@ import { useSelectedLoca } from '@/hooks/use-loca-state';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Globe } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 function formatTRY(n: number): string {
   return new Intl.NumberFormat('tr-TR', {
@@ -64,15 +65,36 @@ export function CarbonChainCard() {
         <Globe className="w-5 h-5 text-[hsl(var(--peri-orange))]" />
         <h3 className="font-bold text-sm">Karbon Zinciri</h3>
         <div className="ml-auto flex gap-1 text-xs">
-          <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))]">
-            K1
-          </span>
-          <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))]">
-            K2
-          </span>
-          <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))]">
-            K3
-          </span>
+          <Tooltip>
+            <TooltipTrigger>
+              <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))] cursor-help">
+                K1
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="bg-[hsl(var(--cave-card))] border-[hsl(var(--border))] text-[hsl(var(--cream))] text-xs">
+              Kural 1: Karbon ayak izi hesabı
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger>
+              <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))] cursor-help">
+                K2
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="bg-[hsl(var(--cave-card))] border-[hsl(var(--border))] text-[hsl(var(--cream))] text-xs">
+              Kural 2: Döviz kuru etkisi
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger>
+              <span className="px-2 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))] cursor-help">
+                K3
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="bg-[hsl(var(--cave-card))] border-[hsl(var(--border))] text-[hsl(var(--cream))] text-xs">
+              Kural 3: Coğrafi mesafe optimizasyonu
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
 
