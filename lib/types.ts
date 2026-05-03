@@ -160,6 +160,7 @@ export interface SellDecision {
   locaId: string;
   variety: string;
   weightTon: number;
+  fireRiskScore: number;
   recommendation: DecisionAction;
   scenarios: Array<{
     label: string;
@@ -174,6 +175,7 @@ export interface SellDecision {
   }>;
   carbonChain: CarbonChain;
   aiReasoning: string[];
+  buyerName: string;
 }
 
 export interface VentilationDecision {

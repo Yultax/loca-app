@@ -44,7 +44,7 @@ export function LocaCell({ loca, isSelected, onClick }: LocaCellProps) {
           <div className="text-[11px] font-mono text-[hsl(var(--muted))]">{loca.number}</div>
           <Plus className="w-3.5 h-3.5 text-[hsl(var(--muted))]/40 group-hover:text-[hsl(var(--peri-orange))] transition-colors" />
         </div>
-        <div className="text-[10px] text-[hsl(var(--muted))]/60">Bos</div>
+        <div className="text-[10px] text-[hsl(var(--muted))]/60">Boş</div>
       </button>
     );
   }
@@ -114,7 +114,7 @@ export function LocaCell({ loca, isSelected, onClick }: LocaCellProps) {
               return (
                 <>
                   <div className="flex justify-between gap-4">
-                    <span className="text-[hsl(var(--muted))]">Sicaklik</span>
+                    <span className="text-[hsl(var(--muted))]">Sıcaklık</span>
                     <span>{avgTemp.toFixed(1)}°C</span>
                   </div>
                   <div className="flex justify-between gap-4">

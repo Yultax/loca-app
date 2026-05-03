@@ -154,10 +154,12 @@ export async function POST(req: NextRequest) {
       locaId,
       variety: variety.name,
       weightTon: loca.currentLoadTon,
+      fireRiskScore: loca.fireRiskScore,
       recommendation: recommendation as 'sell_now' | 'hold',
       scenarios,
       carbonChain,
       aiReasoning,
+      buyerName: bestBuyer.buyerName,
     };
 
     return NextResponse.json(decision);
@@ -193,47 +195,47 @@ function generateReasoning(
 
   if (dormancyRemaining > 30) {
     bullets.push(
-      `${variety.name} dormancy suresi ${variety.dormancyDays} gun, kalan ${dormancyRemaining} gun — depolamaya devam edilebilir.`
+      `${variety.name} dormancy süresi ${variety.dormancyDays} gün, kalan ${dormancyRemaining} gün — depolamaya devam edilebilir.`
     );
   } else if (dormancyRemaining > 0) {
     bullets.push(
-      `⚠ ${variety.name} dormancy bitisine ${dormancyRemaining} gun kaldi — filizlenme riski artmakta.`
+      `⚠ ${variety.name} dormancy bitişine ${dormancyRemaining} gün kaldı — filizlenme riski artmakta.`
     );
   } else {
     bullets.push(
-      `🔴 ${variety.name} dormancy suresi doldu — acil satis onerilir.`
+      `🔴 ${variety.name} dormancy süresi doldu — acil satış önerilir.`
     );
   }
 
   // Fire speed
   if (fireRisk < 20) {
-    bullets.push(`Fire riski dusuk (%${fireRisk}), bekleme maliyeti sinirli.`);
+    bullets.push(`Fire riski düşük (%${fireRisk}), bekleme maliyeti sınırlı.`);
   } else if (fireRisk < 40) {
     bullets.push(
-      `Fire riski orta seviyede (%${fireRisk}), her hafta ~%${(0.4 * 7 + 0.3 * 7).toFixed(1)} artis bekleniyor.`
+      `Fire riski orta seviyede (%${fireRisk}), her hafta ~%${(0.4 * 7 + 0.3 * 7).toFixed(1)} artış bekleniyor.`
     );
   } else {
     bullets.push(
-      `⚠ Fire riski yuksek (%${fireRisk}), hizli degerleme kaybi — erken satis onerilir.`
+      `⚠ Fire riski yüksek (%${fireRisk}), hızlı değerleme kaybı — erken satış önerilir.`
     );
   }
 
   // Best buyer + distance + CO2
   bullets.push(
-    `En iyi alici: ${bestBuyer.buyerName} (${bestBuyer.buyerCity}), ${bestBuyer.totalDistanceKm.toFixed(0)} km, ${carbonChain.totalCO2kg.toFixed(1)} kg CO₂, CBAM: ${carbonChain.cbamCostEUR.toFixed(2)} €`
+    `En iyi alıcı: ${bestBuyer.buyerName} (${bestBuyer.buyerCity}), ${bestBuyer.totalDistanceKm.toFixed(0)} km, ${carbonChain.totalCO2kg.toFixed(1)} kg CO₂, CBAM: ${carbonChain.cbamCostEUR.toFixed(2)} €`
   );
 
   // EUR/TRY note
   if (bestBuyer.paymentCurrency === 'EUR') {
     bullets.push(
-      `EUR odeme — kur: ${eurTry.toFixed(2)} ₺/€${isFallback ? ' (yedek veri)' : ''}`
+      `EUR ödeme — kur: ${eurTry.toFixed(2)} ₺/€${isFallback ? ' (yedek veri)' : ''}`
     );
   }
 
   // Recommendation summary
   if (recommendation === 'sell_now') {
     bullets.push(
-      `Oneri: SIMDI SAT — bekleme fire kaybini karsilamiyor.`
+      `Öneri: ŞİMDİ SAT — bekleme fire kaybını karşılamıyor.`
     );
   } else {
     const bestHold = scenarios.find(
@@ -241,7 +243,7 @@ function generateReasoning(
     );
     if (bestHold) {
       bullets.push(
-        `Oneri: ${bestHold.days} GUN BEKLE — tahmini +%${bestHold.deltaVsNow.toFixed(1)} net gelir artisi.`
+        `Öneri: ${bestHold.days} GÜN BEKLE — tahmini +%${bestHold.deltaVsNow.toFixed(1)} net gelir artışı.`
       );
     }
   }

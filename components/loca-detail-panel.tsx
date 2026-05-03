@@ -81,8 +81,8 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
       >
         <div className="text-[hsl(var(--muted))] text-center space-y-3">
           <Warehouse className="w-12 h-12 mx-auto opacity-20 animate-pulse" />
-          <p className="text-base font-semibold">Detay gorunumu icin bir loca secin</p>
-          <p className="text-xs opacity-60">Sol panelden bir loca tiklayin</p>
+          <p className="text-base font-semibold">Detay görünümü için bir loca seçin</p>
+          <p className="text-xs opacity-60">Sol panelden bir loca tıklayın</p>
         </div>
       </Card>
     );
@@ -100,7 +100,7 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-bold text-lg">
-                  {loca.number} — <span className="italic font-normal">Bos Loca</span>
+                  {loca.number} — <span className="italic font-normal">Boş Loca</span>
                 </h3>
                 {depot && (
                   <span className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-[hsl(var(--earth-brown))]/30 text-[hsl(var(--muted))]">
@@ -205,7 +205,7 @@ export function LocaDetailPanel({ anomalyStartTime, detectedTimestamp, ventilati
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2.5">
             <h3 className="font-bold text-xl leading-tight whitespace-nowrap">
-              {loca.number} — {variety?.name ?? 'Bos'}
+              {loca.number} — {variety?.name ?? 'Boş'}
             </h3>
             {variety && (
               <span className="px-2 py-0.5 rounded text-xs font-semibold bg-[hsl(var(--peri-orange))]/15 text-[hsl(var(--peri-orange))] shrink-0">
