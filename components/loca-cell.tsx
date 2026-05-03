@@ -94,11 +94,11 @@ export function LocaCell({ loca, isSelected, onClick }: LocaCellProps) {
             </div>
             <div className="flex justify-between gap-4">
               <span className="text-[hsl(var(--muted))]">Depoda</span>
-              <span>{days} gun</span>
+              <span>{days} gün</span>
             </div>
             <div className="flex justify-between gap-4">
-              <span className="text-[hsl(var(--muted))]">Dormancy</span>
-              <span>{dormancyRemaining} gun kaldi</span>
+              <span className="text-[hsl(var(--muted))]">Dinlenme</span>
+              <span>{dormancyRemaining} gün kaldı</span>
             </div>
             <div className="flex justify-between gap-4">
               <span className="text-[hsl(var(--muted))]">Fire Risk</span>
@@ -124,6 +124,15 @@ export function LocaCell({ loca, isSelected, onClick }: LocaCellProps) {
                 </>
               );
             })()}
+          </div>
+          <div className={`text-[10px] font-semibold mt-1 pt-1 border-t border-[hsl(var(--border))]/30 ${
+            effectiveStatus === 'critical' ? 'text-[hsl(var(--danger))]'
+            : effectiveStatus === 'warning' ? 'text-[hsl(var(--warning))]'
+            : 'text-[hsl(var(--success))]'
+          }`}>
+            {effectiveStatus === 'optimal' ? '✓ Tüm parametreler güvenli'
+            : effectiveStatus === 'warning' ? '⚠ Bazı değerler sınırda'
+            : '✗ Acil müdahale gerekli'}
           </div>
         </div>
       </TooltipContent>

@@ -2,17 +2,17 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
-import { Activity } from 'lucide-react';
+import { Activity, Wind, AlertTriangle, CheckCircle, Settings, Search } from 'lucide-react';
 import type { ActionEntry } from '@/lib/types';
 
 const POLL_INTERVAL = 3000;
 
-const typeIcons: Record<ActionEntry['type'], string> = {
-  ventilation: '🌬️',
-  anomaly: '⚠️',
-  recovery: '✅',
-  system: '⚙️',
-  detection: '🔍',
+const typeIconComponents: Record<ActionEntry['type'], typeof Wind> = {
+  ventilation: Wind,
+  anomaly: AlertTriangle,
+  recovery: CheckCircle,
+  system: Settings,
+  detection: Search,
 };
 
 const typeColors: Record<ActionEntry['type'], string> = {
@@ -87,7 +87,7 @@ export function ActionLog() {
               <span className="font-mono text-[hsl(var(--muted))] whitespace-nowrap shrink-0">
                 {formatTime(action.timestamp)}
               </span>
-              <span className="shrink-0">{typeIcons[action.type]}</span>
+              {(() => { const Icon = typeIconComponents[action.type]; return <Icon className={`w-3.5 h-3.5 shrink-0 ${typeColors[action.type]}`} />; })()}
               <span className={`${typeColors[action.type]} leading-tight`}>
                 <span className="font-semibold">{action.locaNumber}</span>
                 {' — '}

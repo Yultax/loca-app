@@ -51,7 +51,7 @@ function LocaGrid({ locas, selectedLocaId, onSelect }: {
         <div className="flex-1 w-[2px] rounded-full bg-[hsl(var(--muted))]/20" />
         <div className="py-1.5 flex flex-col items-center gap-[3px]">
           {'KORİDOR'.split('').map((ch, i) => (
-            <span key={i} className="text-[8px] leading-none font-bold text-[hsl(var(--muted))]/50 select-none">
+            <span key={i} className="text-[9px] leading-none font-bold text-[hsl(var(--muted))]/70 select-none">
               {ch}
             </span>
           ))}

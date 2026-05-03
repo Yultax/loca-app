@@ -47,7 +47,7 @@ export function BigBagList({ bigBags, liveReadings, onBagClick }: BigBagListProp
                 <div className="flex items-center gap-1.5">
                   <Thermometer className="w-3 h-3 text-[hsl(var(--peri-orange))]" />
                   <span className="text-[hsl(var(--cream))]">{temp.toFixed(1)}°C</span>
-                  <span className="text-[hsl(var(--muted))] ml-auto">TT100</span>
+                  <span className="text-[hsl(var(--muted))] ml-auto">Sensör</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Droplets className="w-3 h-3 text-[hsl(var(--cave-blue))]" />

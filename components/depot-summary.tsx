@@ -36,16 +36,16 @@ export function DepotSummary({ depot }: DepotSummaryProps) {
           <div className="flex items-center gap-1.5">
             <span className="text-[10px] text-[hsl(var(--muted))]">{depot.city}/{depot.district}</span>
             <h3 className="font-bold text-xs">{depot.name.replace(' Deposu', '')}</h3>
-            {depot.hasChiller && (
-              <span className="px-1 py-0.5 rounded-full bg-[hsl(var(--cave-blue))]/20 text-[hsl(var(--cave-blue))] text-[9px]">
-                Chiller
-              </span>
-            )}
-            {depot.hasDamperControl && (
-              <span className="px-1 py-0.5 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))] text-[9px]">
-                Kepenk
-              </span>
-            )}
+            <span className={`px-1 py-0.5 rounded-full text-[9px] ${
+              avgFireRisk > 40 ? 'bg-[hsl(var(--danger))]/20 text-[hsl(var(--danger))]'
+              : avgFireRisk > 25 ? 'bg-[hsl(var(--warning))]/20 text-[hsl(var(--warning))]'
+              : 'bg-[hsl(var(--success))]/20 text-[hsl(var(--success))]'
+            }`}>
+              Fire %{avgFireRisk}
+            </span>
+            <span className="px-1 py-0.5 rounded-full bg-[hsl(var(--cave-blue))]/20 text-[hsl(var(--cave-blue))] text-[9px]">
+              %{Math.round((filledLocas.length / totalLocas) * 100)} dolu
+            </span>
             <span className="text-[9px] text-[hsl(var(--muted))] ml-auto">{depot.capacityTon.toLocaleString('tr-TR')}t</span>
           </div>
         </div>
